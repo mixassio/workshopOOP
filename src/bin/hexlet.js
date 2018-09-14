@@ -1,5 +1,15 @@
 #!/usr/bin/env node
 
-import half from '..';
+import program from 'commander';
+import downloadInfo from '..';
 
-console.log(half(Number(process.argv[process.argv.length - 1])));
+program
+  .description('Download site from url to file')
+  .version('0.0.1')
+  .arguments('<ip>')
+  .action((ip) => {
+    downloadInfo(ip).then((data) => {
+      console.log(data);
+    });
+  })
+  .parse(process.argv);

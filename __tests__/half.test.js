@@ -2,6 +2,7 @@
 
 import half from '../src';
 
-test('half', () => {
-  expect(half(6)).toBe(3);
+test('half', async () => {
+  const response = half('91.77.226.130');
+  expect(response.status).toBe('200');
 });
