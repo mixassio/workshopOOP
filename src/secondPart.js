@@ -1,7 +1,7 @@
-import getParse from './parse';
+import getParser from './parse';
 
 
 export default (city, service) => {
-  const parser = getParse(service);
-  return parser(city);
+  const parse = getParser(service);
+  return parse(city);
 };

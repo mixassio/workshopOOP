@@ -1,7 +1,9 @@
 import parserOpenWeatherMap from './openWeatherMap';
+import parserMetaWeather from './metaWeather';
 
 const parsers = {
   openweathermap: parserOpenWeatherMap,
+  metaweather: parserMetaWeather,
   stylish: parserOpenWeatherMap,
 };
 
