@@ -2,8 +2,8 @@
 import axios from 'axios';
 
 
-export default async (ip) => {
-  const response = await axios(`http://ip-api.com/json/${ip}`);
+export default async (ip, req = axios) => {
+  const response = await req(`http://ip-api.com/json/${ip}`);
   const {
     city,
     country,
