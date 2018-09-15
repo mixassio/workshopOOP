@@ -1,6 +1,6 @@
 // @flow
 
-import downloadInfo from '../src';
+import { downloadInfo } from '../src';
 
 test('half', async () => {
   const response = () => {

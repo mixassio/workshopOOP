@@ -1,15 +1,6 @@
 // @flow
-import axios from 'axios';
+import downloadGeo from './firstPart';
+import weather from './secondPart';
 
 
-export default async (ip, req = axios) => {
-  const response = await req(`http://ip-api.com/json/${ip}`);
-  const {
-    city,
-    country,
-    lat,
-    lon,
-  } = response.data;
-  const result = { city, country, lat, lon };
-  return result;
-};
+export { downloadGeo, weather };
