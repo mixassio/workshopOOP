@@ -1,6 +1,6 @@
 // @flow
 import downloadGeo from './firstPart';
-import weather from './secondPart';
+import Weather from './secondPart';
 
 
-export { downloadGeo, weather };
+export { downloadGeo, Weather };

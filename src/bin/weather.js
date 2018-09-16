@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import program from 'commander';
-import { weather } from '..';
+import { Weather } from '..';
 
 program
   .description('Download site from url to file')
@@ -9,7 +9,8 @@ program
   .arguments('<city>')
   .option('-s, --service <name>', 'name servise', 'openweathermap')
   .action((city) => {
-    weather()(city, program.service).then((data) => {
+    const weather = new Weather();
+    weather.getWeather(city, program.service).then((data) => {
       console.log(data);
     });
   })

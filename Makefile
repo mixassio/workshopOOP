@@ -1,7 +1,7 @@
 install: install-deps install-flow-typed
 
 run:
-	npm run babel-node -- 'src/bin/weather.js' 'Moscow'
+	npm run babel-node -- 'src/bin/weather.js' --service metaweather 'Moscow'
 
 install-deps:
 	npm install

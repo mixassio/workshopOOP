@@ -2,7 +2,7 @@
 import fs from 'fs';
 import nock from 'nock';
 import downloadInfo from '../src/firstPart';
-import weather from '../src/secondPart';
+import Weather from '../src/secondPart';
 
 nock.disableNetConnect();
 describe('Test function', () => {
@@ -41,8 +41,11 @@ describe('Test function', () => {
     const response = await weather()('Moscow', 'openweathermap');
     expect(response).toEqual(JSON.parse(returnTrue));
   });
+
+  
   it('add new service and check working', async () => {
-    const response = await weather('newService', () => JSON.parse(returnTrue))('Moscow', 'newService');
+    const myWeather = new Weather([{ name: 'newService', func: () => JSON.parse(returnTrue) }]);
+    const response = await myWeather.getWeather('Moscow', 'newService');
     expect(response).toEqual(JSON.parse(returnTrue));
   });
 });
