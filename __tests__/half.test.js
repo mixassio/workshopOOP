@@ -41,6 +41,6 @@ describe('Test function', () => {
     const response = await weather('Moscow', 'openweathermap');
     console.log(JSON.stringify(response));
     console.log(JSON.stringify(returnTrue));
-    expect(JSON.stringify(response)).toEqual(JSON.stringify(returnTrue));
+    expect(response).toEqual(returnTrue);
   });
 });

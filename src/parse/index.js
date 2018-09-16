@@ -11,4 +11,3 @@ export default format => (data) => {
   const parser = parsers[format];
   return parser(data);
 };
-
