@@ -1,9 +1,8 @@
 // @flow
+import fs from 'fs';
 import nock from 'nock';
 import downloadInfo from '../src/firstPart';
 import weather from '../src/secondPart';
-import responseOpenWeatherMap from './__fixtures__/responseOpenWeatherMap';
-import returnTrue from './__fixtures__/returnTrue';
 
 nock.disableNetConnect();
 describe('Test function', () => {
@@ -34,13 +33,18 @@ describe('Test function', () => {
     expect(JSON.stringify(objAnswer)).toBe(trueAnswer);
   });
 
+  const myResponse = fs.readFileSync('./__tests__/__fixtures__/responseOpenWeatherMap.json', 'utf8').toString();
+  const returnTrue = fs.readFileSync('./__tests__/__fixtures__/returnTrue.json', 'utf8').toString();
+
   it('weather test openWeatherMap', async () => {
     const host = 'http://openweathermap.org';
     const status = 200;
-    nock(host).get('/data/2.5/weather?q=Moscow&appid=b6907d289e10d714a6e88b30761fae22').reply(status, responseOpenWeatherMap);
-    const response = await weather('Moscow', 'openweathermap');
-    console.log(JSON.stringify(response));
-    console.log(JSON.stringify(returnTrue));
-    expect(response).toEqual(returnTrue);
+    nock(host).get('/data/2.5/weather?q=Moscow&appid=b6907d289e10d714a6e88b30761fae22').reply(status, JSON.parse(myResponse));
+    const response = await weather()('Moscow', 'openweathermap');
+    expect(response).toEqual(JSON.parse(returnTrue));
+  });
+  it('add new service and check working', async () => {
+    const response = await weather('newService', () => JSON.parse(returnTrue))('Moscow', 'newService');
+    expect(response).toEqual(JSON.parse(returnTrue));
   });
 });

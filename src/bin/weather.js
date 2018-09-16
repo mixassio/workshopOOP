@@ -9,7 +9,7 @@ program
   .arguments('<city>')
   .option('-s, --service <name>', 'name servise', 'openweathermap')
   .action((city) => {
-    weather(city, program.service).then((data) => {
+    weather()(city, program.service).then((data) => {
       console.log(data);
     });
   })

@@ -1,7 +1,10 @@
-import getParser from './parse';
+import { getParser, parsers } from './parse';
 
 
-export default (city, service) => {
+export default (nameNewService = null, newService = null) => (city, service) => {
+  if (newService) {
+    parsers[nameNewService] = newService;
+  }
   const parse = getParser(service);
   return parse(city);
 };

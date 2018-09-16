@@ -7,7 +7,9 @@ const parsers = {
   stylish: parserOpenWeatherMap,
 };
 
-export default format => (data) => {
+const getParser = format => (data) => {
   const parser = parsers[format];
   return parser(data);
 };
+
+export { getParser, parsers };
