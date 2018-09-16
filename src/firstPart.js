@@ -10,6 +10,11 @@ export default async (ip, req = axios) => {
     lat,
     lon,
   } = response.data;
-  const result = { city, country, lat, lon };
+  const result = {
+    city,
+    country,
+    lat,
+    lon,
+  };
   return result;
 };
